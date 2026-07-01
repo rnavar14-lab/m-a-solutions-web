@@ -3,158 +3,487 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>M-A Solutions — Adhesivos Industriales</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+<title>M-A Solutions | Adhesivos Industriales y Soporte Nordson</title>
+<meta name="description" content="Proveedor industrial de adhesivos (hot melt, PVA, contacto, cianoacrilatos) e integración tecnológica Nordson en la región occidente. La línea de producción no se detiene.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira:wght@500;600;700&family=Inter:wght@400;500;600&family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0&display=swap">
 <style>
-  :root{ --font-sans: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-  *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:var(--font-sans); background:#fff; color:#1f2b49; }
-  .ms{ font-family:'Material Symbols Outlined'; font-weight:normal; font-style:normal; line-height:1; vertical-align:middle; }
-  .cat{position:relative; height:210px; border-radius:12px; overflow:hidden; cursor:pointer;}
-  .cat-face{position:absolute; inset:0; background:#22305a; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:12px; transition:opacity .3s; z-index:2;}
-  .cat-face .ico{font-size:44px; color:#74C4D9;}
-  .cat-face .lbl{color:#dbe4f1; font-size:15px; font-weight:500; text-align:center; padding:0 8px;}
-  .cat-hover{position:absolute; inset:0; background-size:cover; background-position:center; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:14px;}
-  .cat-hover::before{content:""; position:absolute; inset:0; background:rgba(20,33,64,0.62);}
-  .cat-h-t{position:relative; color:#fff; font-size:16px; font-weight:500; text-align:center; padding:0 8px;}
-  .cat-btn{position:relative; background:#74C4D9; color:#10243a; font-size:13px; font-weight:500; padding:8px 18px; border-radius:6px;}
-  .cat:hover .cat-face{opacity:0;}
-  .wa{position:fixed; right:26px; bottom:26px; width:58px; height:58px; border-radius:50%; background:#25D366; display:flex; align-items:center; justify-content:center; box-shadow:0 3px 12px rgba(0,0,0,0.28); z-index:50;}
+  :root{
+    --navy:#1f2b49; --navy-deep:#11192e; --navy-2:#22305a; --navy-3:#26345e;
+    --cyan:#74C4D9; --cyan-br:#4fc6e0; --cyan-dk:#2f7d9c; --ink:#1f2b49;
+    --muted:#5b6472; --line:#e3e7ec; --bg-soft:#f4f6f8; --wa:#25D366;
+    --h:'Saira',-apple-system,sans-serif; --b:'Inter',-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--b);color:var(--ink);background:#fff;line-height:1.6;overflow-x:hidden}
+  h1,h2,h3,.hf{font-family:var(--h)}
+  img{max-width:100%;display:block}
+  a{text-decoration:none;color:inherit}
+  .ms{font-family:'Material Symbols Outlined';font-weight:normal;line-height:1;vertical-align:middle}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+  .ast{color:var(--cyan-dk);font-weight:600}
+  section{position:relative}
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s ease}
+  .rv.in{opacity:1;transform:none}
+  .rv.d1{transition-delay:.08s}.rv.d2{transition-delay:.16s}.rv.d3{transition-delay:.24s}.rv.d4{transition-delay:.32s}
+
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(17,25,46,.55);backdrop-filter:blur(6px);transition:background .3s,padding .3s;padding:16px 0}
+  header.nav.solid{background:var(--navy-deep);padding:10px 0;box-shadow:0 2px 18px rgba(0,0,0,.25)}
+  .nav-in{display:flex;align-items:center;justify-content:space-between}
+  header.nav img.logo{height:44px;transition:height .3s}
+  header.nav.solid img.logo{height:38px}
+  nav ul{list-style:none;display:flex;align-items:center;gap:28px}
+  nav a{color:#dbe4f1;font-size:15px;font-weight:500;transition:color .2s;position:relative}
+  nav a:hover{color:var(--cyan)}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--b);font-weight:600;border:none;cursor:pointer;border-radius:8px;transition:transform .15s,box-shadow .2s,background .2s}
+  .btn:hover{transform:translateY(-2px)}
+  .btn-cy{background:var(--cyan);color:#0e2233;padding:11px 20px;font-size:14px;box-shadow:0 4px 14px rgba(116,196,217,.35)}
+  .btn-cy:hover{background:var(--cyan-br)}
+  .btn-gh{background:transparent;border:1px solid #7e91b8;color:#fff;padding:11px 20px;font-size:14px}
+  .btn-gh:hover{border-color:var(--cyan);color:var(--cyan)}
+  .btn-lg{padding:15px 28px;font-size:15px}
+  .burger{display:none;background:none;border:none;color:#fff;font-size:30px;cursor:pointer}
+
+  .hero{min-height:92vh;display:flex;align-items:center;position:relative;overflow:hidden;background:var(--navy-deep)}
+  .hero-bg{position:absolute;inset:0;background:url('assets/ma2.jpg') center/cover;animation:ken 22s ease-in-out infinite alternate}
+  @keyframes ken{from{transform:scale(1.02)}to{transform:scale(1.16)}}
+  .hero-ov{position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,19,38,.95) 0%,rgba(20,33,64,.82) 45%,rgba(20,33,64,.45) 100%)}
+  .hero .wrap{position:relative;z-index:2;padding-top:90px;padding-bottom:40px}
+  .badge{display:inline-block;background:rgba(116,196,217,.16);color:#9fe0f0;font-size:13px;font-weight:500;padding:7px 15px;border-radius:22px;margin-bottom:22px;border:1px solid rgba(116,196,217,.3)}
+  .hero h1{color:#fff;font-size:clamp(34px,5.4vw,60px);font-weight:700;line-height:1.08;max-width:820px;letter-spacing:-.5px}
+  .hero h1 .accent{color:var(--cyan)}
+  .hero p{color:#cdd7e6;font-size:clamp(15px,2vw,18px);line-height:1.65;margin:22px 0 32px;max-width:560px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .dots{display:flex;gap:9px;margin-top:42px}
+  .dots span{width:12px;height:6px;border-radius:3px;background:#5a6c92;transition:width .3s,background .3s}
+  .dots span.on{width:32px;background:var(--cyan)}
+
+  .stats{background:var(--navy);padding:38px 0}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stat .num{font-family:var(--h);font-size:clamp(30px,4vw,46px);font-weight:700;color:var(--cyan);line-height:1}
+  .stat .lbl{color:#b9c4d8;font-size:14px;margin-top:8px}
+  .stat + .stat{border-left:1px solid rgba(255,255,255,.09)}
+
+  .sec{padding:84px 0}
+  .sec.soft{background:var(--bg-soft)}
+  .eyebrow{color:var(--cyan-dk);font-weight:600;font-size:14px;letter-spacing:1px;text-transform:uppercase}
+  .sec h2{font-size:clamp(26px,3.6vw,38px);font-weight:700;color:var(--navy);line-height:1.15;margin:8px 0 0;letter-spacing:-.5px}
+  .sec .lead{color:var(--muted);font-size:16px;max-width:640px;margin-top:14px}
+  .center{text-align:center}
+  .center .lead{margin-left:auto;margin-right:auto}
+
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:52px}
+  .pcard{background:#fff;border:1px solid var(--line);border-radius:16px;padding:34px 28px;transition:transform .3s,box-shadow .3s,border-color .3s}
+  .pcard:hover{transform:translateY(-8px);box-shadow:0 18px 40px rgba(31,43,73,.12);border-color:transparent}
+  .pico{width:66px;height:66px;border-radius:14px;background:linear-gradient(135deg,#e8f5fa,#d3ecf4);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .pico .ms{font-size:34px;color:var(--cyan-dk)}
+  .pcard h3{font-size:20px;color:var(--navy);font-weight:600}
+  .pcard p{color:var(--muted);font-size:14.5px;margin-top:10px}
+
+  .subhead{display:flex;align-items:center;gap:12px;margin:54px 0 24px}
+  .subhead .ms{color:var(--cyan-dk);font-size:26px}
+  .subhead h3{font-family:var(--h);font-size:22px;font-weight:600;color:var(--navy)}
+  .subhead .rule{flex:1;height:1px;background:var(--line)}
+  .grid-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+  .icard{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px 22px;transition:transform .3s,box-shadow .3s}
+  .icard:hover{transform:translateY(-6px);box-shadow:0 14px 32px rgba(31,43,73,.1)}
+  .icard .ic{width:52px;height:52px;border-radius:12px;background:var(--navy);display:flex;align-items:center;justify-content:center;margin-bottom:14px;transition:background .3s}
+  .icard:hover .ic{background:var(--cyan-dk)}
+  .icard .ic .ms{color:var(--cyan);font-size:26px}
+  .icard h4{font-family:var(--h);font-size:16px;font-weight:600;color:var(--navy)}
+  .icard p{color:var(--muted);font-size:13.5px;margin-top:7px;line-height:1.55}
+
+  .mant{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;background:var(--navy);border-radius:20px;padding:44px;margin-top:8px;color:#fff;overflow:hidden}
+  .mant h3{font-size:26px;font-weight:700;color:#fff}
+  .mant p{color:#c3cee0;font-size:15px;margin-top:14px}
+  .mant ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:12px}
+  .mant li{display:flex;gap:10px;color:#dbe4f1;font-size:14.5px}
+  .mant li .ms{color:var(--cyan);font-size:20px;flex-shrink:0}
+  .mant .hl{background:rgba(116,196,217,.12);border:1px solid rgba(116,196,217,.3);border-radius:14px;padding:26px;text-align:center}
+  .mant .hl .big{font-family:var(--h);font-size:52px;font-weight:700;color:var(--cyan)}
+  .mant .hl .t{color:#dbe4f1;font-size:14px;margin-top:6px}
+
+  .about{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .tabs{display:flex;gap:10px;margin:18px 0 16px}
+  .tab{font-family:var(--h);font-weight:600;font-size:14px;padding:9px 18px;border-radius:9px;border:1px solid var(--line);background:#fff;color:var(--muted);cursor:pointer;transition:all .2s}
+  .tab.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .tab-body{color:var(--muted);font-size:15px;min-height:150px}
+  .tab-body p{margin-bottom:10px}
+  .tab-body strong{color:var(--navy)}
+  .about-media{position:relative;border-radius:18px;overflow:hidden;box-shadow:0 20px 50px rgba(31,43,73,.18)}
+  .about-media img{width:100%;height:440px;object-fit:cover;transition:transform .8s}
+  .about-media:hover img{transform:scale(1.05)}
+  .about-media .tag{position:absolute;bottom:18px;left:18px;background:var(--cyan);color:#0e2233;font-family:var(--h);font-weight:700;font-size:15px;padding:10px 18px;border-radius:10px}
+
+  .logos{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:44px}
+  .logo-box{height:96px;border:1px solid var(--line);border-radius:12px;background:#fff;display:flex;align-items:center;justify-content:center;padding:14px;filter:grayscale(1);opacity:.72;transition:all .3s}
+  .logo-box:hover{filter:grayscale(0);opacity:1;transform:translateY(-4px);box-shadow:0 12px 26px rgba(31,43,73,.1)}
+  .logo-box span{font-family:var(--h);font-weight:700;color:var(--navy);font-size:15px;text-align:center;line-height:1.15}
+  .logo-box small{display:block;font-family:var(--b);font-weight:500;color:var(--cyan-dk);font-size:10px;letter-spacing:1px}
+
+  .faq{max-width:820px;margin:44px auto 0}
+  .qa{border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden;background:#fff}
+  .qa .q{width:100%;text-align:left;background:none;border:none;cursor:pointer;padding:20px 22px;font-family:var(--h);font-weight:600;font-size:16px;color:var(--navy);display:flex;justify-content:space-between;align-items:center;gap:14px}
+  .qa .q .ms{color:var(--cyan-dk);transition:transform .3s}
+  .qa.open .q .ms{transform:rotate(180deg)}
+  .qa .a{max-height:0;overflow:hidden;transition:max-height .35s ease;color:var(--muted);font-size:14.5px}
+  .qa .a p{padding:0 22px 20px}
+
+  .cover{background:var(--navy);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:center;color:#fff}
+  .cover h3{font-size:26px;font-weight:700}
+  .cover p{color:#c3cee0;font-size:15px;margin-top:14px}
+  .states{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .states span{display:flex;align-items:center;gap:9px;color:#dbe4f1;font-size:15px}
+  .states .ms{color:var(--cyan);font-size:20px}
+
+  .contact{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:stretch}
+  .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 16px 40px rgba(31,43,73,.08)}
+  .form-card .row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:13px;font-weight:600;color:var(--navy);margin-bottom:6px}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);border-radius:9px;padding:12px 14px;font-family:var(--b);font-size:14px;color:var(--ink);transition:border-color .2s,box-shadow .2s;background:#fff}
+  .field input:focus,.field textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(116,196,217,.2)}
+  .contact-info{display:flex;flex-direction:column;gap:22px;justify-content:center}
+  .ci{display:flex;gap:16px;align-items:flex-start}
+  .ci .ic{width:48px;height:48px;border-radius:12px;background:#e8f5fa;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .ci .ic .ms{color:var(--cyan-dk);font-size:24px}
+  .ci .t{font-size:13px;color:var(--muted)}
+  .ci .v{font-family:var(--h);font-weight:600;font-size:17px;color:var(--navy);margin-top:2px}
+  .ci .v small{display:block;font-family:var(--b);font-weight:500;font-size:14px;color:var(--muted)}
+
+  footer{background:var(--navy-deep);color:#9fb0c9;padding:56px 0 26px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+  footer img.logo{height:40px;margin-bottom:16px}
+  footer p{font-size:14px;line-height:1.7;max-width:320px}
+  footer h5{font-family:var(--h);color:#fff;font-size:15px;font-weight:600;margin-bottom:14px}
+  footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  footer ul a{font-size:14px;transition:color .2s}
+  footer ul a:hover{color:var(--cyan)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.08);margin-top:40px;padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:#6f7f9c}
+  .legend{font-size:12px;color:#6f7f9c;margin-top:10px;font-style:italic}
+
+  .wa-float{position:fixed;right:24px;bottom:24px;width:58px;height:58px;border-radius:50%;background:var(--wa);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.28);z-index:70;transition:transform .2s}
+  .wa-float:hover{transform:scale(1.08)}
+  .wa-float .ms{color:#fff;font-size:32px}
+  .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pulse 2.2s ease-out infinite}
+  @keyframes pulse{0%{transform:scale(1);opacity:.7}100%{transform:scale(1.6);opacity:0}}
+
+  @media(max-width:920px){
+    nav ul{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);background:var(--navy-deep);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;padding:40px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px rgba(0,0,0,.4)}
+    nav ul.show{transform:none}
+    nav a{font-size:18px}
+    .burger{display:block;z-index:80}
+    .stats-grid{grid-template-columns:1fr 1fr;gap:28px 20px}
+    .stat + .stat{border-left:none}
+    .stat:nth-child(3),.stat:nth-child(4){border-top:1px solid rgba(255,255,255,.09);padding-top:24px}
+    .pillars{grid-template-columns:1fr;gap:18px}
+    .grid-cards{grid-template-columns:1fr 1fr}
+    .mant{grid-template-columns:1fr;padding:32px}
+    .about{grid-template-columns:1fr;gap:32px}
+    .about-media img{height:320px}
+    .logos{grid-template-columns:repeat(3,1fr)}
+    .cover{grid-template-columns:1fr;padding:34px}
+    .contact{grid-template-columns:1fr;gap:32px}
+    .foot-grid{grid-template-columns:1fr;gap:28px}
+  }
+  @media(max-width:520px){
+    .wrap{padding:0 18px}
+    .sec{padding:60px 0}
+    .grid-cards{grid-template-columns:1fr}
+    .form-card .row{grid-template-columns:1fr}
+    .states{grid-template-columns:1fr}
+    .hero{min-height:88vh}
+    .btn-lg{padding:13px 22px}
+  }
 </style>
 </head>
 <body>
 
-  <header style="background:#1f2b49; display:flex; align-items:center; justify-content:space-between; padding:16px 6%;">
-    <img src="assets/logo.png" alt="M-A Solutions — Adhesivos Industriales" style="height:46px; display:block;">
-    <nav style="display:flex; align-items:center; gap:30px;">
-      <span style="color:#74C4D9; font-size:15px;">Inicio</span>
-      <span style="color:#cdd7e6; font-size:15px;">Soluciones</span>
-      <span style="color:#cdd7e6; font-size:15px;">Servicios</span>
-      <span style="color:#cdd7e6; font-size:15px;">Nosotros</span>
-      <span style="color:#cdd7e6; font-size:15px;">Contacto</span>
-      <span style="background:#74C4D9; color:#10243a; font-size:15px; font-weight:500; padding:10px 22px; border-radius:7px;">Cotizar</span>
+<header class="nav" id="hdr">
+  <div class="wrap nav-in">
+    <a href="#inicio"><img src="assets/logo.png" alt="M-A Solutions — Adhesivos Industriales" class="logo"></a>
+    <nav>
+      <ul id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#clientes">Clientes</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+        <li><a href="#contacto" class="btn btn-cy">Solicita una llamada</a></li>
+      </ul>
     </nav>
-  </header>
+    <button class="burger" id="burger" aria-label="Menú"><span class="ms">menu</span></button>
+  </div>
+</header>
 
-  <section style="position:relative; min-height:560px; display:flex; align-items:center; background:linear-gradient(90deg, rgba(17,25,46,0.95) 0%, rgba(20,33,64,0.78) 42%, rgba(20,33,64,0.38) 100%), url('assets/hero.jpg') center/cover;">
-    <div style="padding:0 6%; max-width:680px;">
-      <span style="display:inline-block; background:rgba(116,196,217,0.18); color:#9fe0f0; font-size:13px; padding:7px 14px; border-radius:22px; margin-bottom:22px;">Adhesivos industriales · Occidente</span>
-      <div style="color:#fff; font-size:54px; font-weight:500; line-height:1.1;">La línea no se detiene</div>
-      <p style="color:#cdd7e6; font-size:17px; line-height:1.6; margin:20px 0 30px; max-width:540px;">Soluciones integrales en adhesivos y tecnología Nordson, con la rapidez que mantiene tu producción en marcha.</p>
-      <div style="display:flex; gap:14px;">
-        <span style="background:#74C4D9; color:#10243a; font-size:15px; font-weight:500; padding:14px 26px; border-radius:7px;">Solicitar cotización</span>
-        <span style="border:1px solid #7e91b8; color:#fff; font-size:15px; padding:14px 26px; border-radius:7px; display:inline-flex; align-items:center; gap:8px;"><span class="ms" style="font-size:20px;">bolt</span> Emergencias</span>
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="wrap">
+    <span class="badge rv in">Adhesivos industriales · Región Occidente</span>
+    <h1 class="rv in">¡La línea de producción <span class="accent">no se detiene</span>!</h1>
+    <p class="rv in d1">Asegura la continuidad operativa de tu planta. Integramos tecnología, mantenimiento especializado y una variedad versátil de adhesivos industriales para que tu empresa nunca deje de avanzar.</p>
+    <div class="hero-cta rv in d2">
+      <a href="#contacto" class="btn btn-cy btn-lg"><span class="ms">call</span> Solicita una llamada</a>
+      <a href="https://wa.me/523381511894" class="btn btn-gh btn-lg"><span class="ms">bolt</span> Atención inmediata</a>
+    </div>
+    <div class="dots"><span class="on"></span><span></span><span></span></div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="wrap stats-grid">
+    <div class="stat rv"><div class="num" data-count="1" data-suffix=" h">0</div><div class="lbl">Respuesta en zona local</div></div>
+    <div class="stat rv d1"><div class="num" data-count="1" data-suffix=" sem">0</div><div class="lbl">Stock dedicado por cliente</div></div>
+    <div class="stat rv d2"><div class="num" data-count="30" data-suffix="%">0</div><div class="lbl">Ahorro vs. refacción original</div></div>
+    <div class="stat rv d3"><div class="num" data-count="13" data-prefix="+">0</div><div class="lbl">Años de experiencia</div></div>
+  </div>
+</section>
+
+<section class="sec" id="ventajas">
+  <div class="wrap center">
+    <span class="eyebrow rv">Por qué M-A Solutions</span>
+    <h2 class="rv">Ventajas competitivas que mantienen tu planta operando</h2>
+    <p class="lead rv d1">Tres compromisos que nos diferencian de los proveedores globales impersonales: cercanía, versatilidad y respaldo técnico real.</p>
+    <div class="pillars">
+      <div class="pcard rv d1">
+        <div class="pico"><span class="ms">verified_user</span></div>
+        <h3>Continuidad Operativa Asegurada</h3>
+        <p>Garantizamos que tu línea no se detenga gracias a nuestra respuesta ágil y stock dedicado para cada cliente.</p>
       </div>
-      <div style="display:flex; gap:9px; margin-top:40px;">
-        <span style="width:32px;height:6px;border-radius:3px;background:#74C4D9;"></span>
-        <span style="width:12px;height:6px;border-radius:3px;background:#5a6c92;"></span>
-        <span style="width:12px;height:6px;border-radius:3px;background:#5a6c92;"></span>
+      <div class="pcard rv d2">
+        <div class="pico"><span class="ms">tune</span></div>
+        <h3>Soluciones a la Medida</h3>
+        <p>Asesoría consultiva personalizada y un portafolio de productos versátil que se adapta a cada industria y sustrato.</p>
+      </div>
+      <div class="pcard rv d3">
+        <div class="pico"><span class="ms">precision_manufacturing</span></div>
+        <h3>Ingeniería y Soporte Nordson</h3>
+        <p>Refacciones 100% compatibles y préstamo de maquinaria sin costo de renta en reparaciones complejas.</p>
       </div>
     </div>
-    <span class="ms" style="position:absolute; left:24px; top:50%; transform:translateY(-50%); color:#fff; font-size:42px; opacity:0.8; text-shadow:0 1px 4px rgba(0,0,0,0.4);">chevron_left</span>
-    <span class="ms" style="position:absolute; right:24px; top:50%; transform:translateY(-50%); color:#fff; font-size:42px; opacity:0.8; text-shadow:0 1px 4px rgba(0,0,0,0.4);">chevron_right</span>
-  </section>
+  </div>
+</section>
 
-  <section style="background:#fff; padding:60px 6%;">
-    <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:44px; max-width:1200px; margin:0 auto;">
-      <div style="text-align:center;">
-        <div style="width:70px;height:70px;border-radius:50%;background:#e8f5fa;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span class="ms" style="font-size:36px;color:#2f7d9c;">bolt</span></div>
-        <div style="color:#1f2b49; font-size:20px; font-weight:500;">Rapidez de respuesta</div>
-        <p style="color:#6b7280; font-size:14px; line-height:1.6; margin:8px 0 0;">"La línea no se detiene": envíos al día siguiente y atención a emergencias.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:70px;height:70px;border-radius:50%;background:#e8f5fa;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span class="ms" style="font-size:36px;color:#2f7d9c;">water_drop</span></div>
-        <div style="color:#1f2b49; font-size:20px; font-weight:500;">Insumos industriales</div>
-        <p style="color:#6b7280; font-size:14px; line-height:1.6; margin:8px 0 0;">Adhesivos y hot melt: pegamento blanco, de contacto y cianoacrilatos.</p>
-      </div>
-      <div style="text-align:center;">
-        <div style="width:70px;height:70px;border-radius:50%;background:#e8f5fa;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;"><span class="ms" style="font-size:36px;color:#2f7d9c;">precision_manufacturing</span></div>
-        <div style="color:#1f2b49; font-size:20px; font-weight:500;">Integración tecnológica</div>
-        <p style="color:#6b7280; font-size:14px; line-height:1.6; margin:8px 0 0;">Refacciones y soporte técnico especializado de equipos Nordson.</p>
-      </div>
+<section class="sec soft" id="soluciones">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv">Nuestras soluciones</span>
+      <h2 class="rv">Insumos, tecnología y mantenimiento en un solo aliado</h2>
+      <p class="lead rv d1">Somos "la llave perica" del sector: cubrimos desde el adhesivo hasta el equipo donde se aplica y su mantenimiento.</p>
     </div>
-  </section>
 
-  <section style="background:#f4f6f8; padding:56px 6%;">
-    <div style="text-align:center; margin-bottom:30px;">
-      <div style="color:#1f2b49; font-size:28px; font-weight:500;">Nuestras categorías</div>
-      <p style="color:#6b7280; font-size:14px; margin:6px 0 0;">Pasa el cursor sobre una tarjeta</p>
+    <div class="subhead rv"><span class="ms">water_drop</span><h3>Adhesivos industriales</h3><span class="rule"></span></div>
+    <div class="grid-cards">
+      <div class="icard rv"><div class="ic"><span class="ms">local_fire_department</span></div><h4>Hot Melt en Pellets</h4><p>Termofusible de alta eficiencia para pegado rápido y limpio en líneas automáticas de empaque.</p></div>
+      <div class="icard rv d1"><div class="ic"><span class="ms">layers</span></div><h4>Hot Melt Almohadillas</h4><p>Formulación de fácil dosificación que optimiza el rendimiento y evita la carbonización en el tanque.</p></div>
+      <div class="icard rv d2"><div class="ic"><span class="ms">view_in_ar</span></div><h4>Hot Melt Barras y Bloques</h4><p>Versátil y de fácil aplicación manual para ensambles rápidos en industria mueblera y empaque.</p></div>
+      <div class="icard rv d3"><div class="ic"><span class="ms">opacity</span></div><h4>Pegamentos Blancos (PVA)</h4><p>Base agua con más de 40 variaciones adaptadas a la porosidad y velocidad de secado de tu producción.</p></div>
+      <div class="icard rv"><div class="ic"><span class="ms">grain</span></div><h4>Adhesivos de Contacto</h4><p>Unión de alta resistencia y flexibilidad, ideal para espumas, maderas y tapicería.</p></div>
+      <div class="icard rv d1"><div class="ic"><span class="ms">bolt</span></div><h4>Cianoacrilatos</h4><p>Pegamento instantáneo de fuerza industrial para fijaciones de alta precisión en componentes rígidos.</p></div>
+      <div class="icard rv d2"><div class="ic"><span class="ms">shield</span></div><h4>Silicones</h4><p>Selladores de alta durabilidad con excelente resistencia térmica y aislamiento para uniones técnicas.</p></div>
+      <div class="icard rv d3" style="background:var(--navy);border-color:var(--navy)"><div class="ic" style="background:var(--cyan-dk)"><span class="ms">support_agent</span></div><h4 style="color:#fff">Asesoría incluida</h4><p style="color:#b9c4d8">Te ayudamos a encontrar la fórmula exacta según tu aplicación, sustrato y tiempos de secado.</p></div>
     </div>
-    <div style="display:grid; grid-template-columns:repeat(5,1fr); gap:16px; max-width:1280px; margin:0 auto;">
-      <div class="cat"><div class="cat-face"><span class="ms ico">local_fire_department</span><span class="lbl">Hot Melt</span></div><div class="cat-hover" style="background-image:url('assets/cat-hotmelt.jpg');"><span class="cat-h-t">Hot Melt</span><span class="cat-btn">Ver más</span></div></div>
-      <div class="cat"><div class="cat-face"><span class="ms ico">water_drop</span><span class="lbl">Pegamento blanco</span></div><div class="cat-hover" style="background-image:url('assets/cat-blanco.jpg');"><span class="cat-h-t">Pegamento blanco</span><span class="cat-btn">Ver más</span></div></div>
-      <div class="cat"><div class="cat-face"><span class="ms ico">layers</span><span class="lbl">De contacto</span></div><div class="cat-hover" style="background-image:url('assets/cat-contacto.jpg');"><span class="cat-h-t">De contacto</span><span class="cat-btn">Ver más</span></div></div>
-      <div class="cat"><div class="cat-face"><span class="ms ico">science</span><span class="lbl">Cianoacrilatos</span></div><div class="cat-hover" style="background-image:url('assets/cat-ciano.jpg');"><span class="cat-h-t">Cianoacrilatos</span><span class="cat-btn">Ver más</span></div></div>
-      <div class="cat"><div class="cat-face"><span class="ms ico">settings</span><span class="lbl">Aplicadores</span></div><div class="cat-hover" style="background-image:url('assets/cat-equipo.jpg');"><span class="cat-h-t">Aplicadores y equipo</span><span class="cat-btn">Ver más</span></div></div>
-    </div>
-  </section>
 
-  <section style="background:#fff; padding:60px 6%;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; align-items:center; max-width:1200px; margin:0 auto;">
+    <div class="subhead rv"><span class="ms">precision_manufacturing</span><h3>Maquinaria y equipos Nordson</h3><span class="rule"></span></div>
+    <div class="grid-cards">
+      <div class="icard rv"><div class="ic"><span class="ms">star</span></div><h4>Serie ProBlue</h4><p>El equipo estrella de la industria: durabilidad, eficiencia operativa y diseño compacto reconocidos mundialmente.</p></div>
+      <div class="icard rv d1"><div class="ic"><span class="ms">back_hand</span></div><h4>Serie DuraBlue</h4><p>Sistema robusto y confiable, ideal para aplicaciones manuales y líneas de producción intermitentes.</p></div>
+      <div class="icard rv d2"><div class="ic"><span class="ms">memory</span></div><h4>Serie ProBlue Flex</h4><p>Tecnología de última generación con flexibilidad modular que optimiza el consumo de energía y adhesivo.</p></div>
+      <div class="icard rv d3"><div class="ic"><span class="ms">precision_manufacturing</span></div><h4>Serie 3000</h4><p>Tecnología tradicional y robusta con amplio historial de resistencia para operaciones continuas.</p></div>
+      <div class="icard rv"><div class="ic"><span class="ms">colorize</span></div><h4>Pistola Aplicadora AD31</h4><p>Aplicador manual ergonómico y resistente, ideal para trabajos de precisión y ensamble de componentes.</p></div>
+      <div class="icard rv d1"><div class="ic"><span class="ms">precision_manufacturing</span></div><h4>Pistola Aplicadora AD41</h4><p>Automática de alta velocidad, garantiza corte limpio del adhesivo y patrón de pegado uniforme.</p></div>
+    </div>
+
+    <div class="subhead rv"><span class="ms">build</span><h3>Servicio y mantenimiento</h3><span class="rule"></span></div>
+    <div class="mant rv">
       <div>
-        <span style="color:#2f7d9c; font-size:14px; font-weight:500;">Acerca de nosotros</span>
-        <div style="color:#1f2b49; font-size:28px; font-weight:500; line-height:1.25; margin:8px 0 18px;">Líderes en adhesivos industriales desde 2012</div>
-        <div style="display:flex; gap:10px; margin-bottom:18px;">
-          <span style="background:#1f2b49; color:#fff; font-size:14px; padding:8px 16px; border-radius:7px;">Historia</span>
-          <span style="color:#5b6472; font-size:14px; padding:8px 16px; border:0.5px solid #dce0e6; border-radius:7px;">Misión</span>
-          <span style="color:#5b6472; font-size:14px; padding:8px 16px; border:0.5px solid #dce0e6; border-radius:7px;">Visión</span>
+        <h3>Tu equipo nunca deja de trabajar</h3>
+        <p>Damos mantenimiento preventivo y correctivo a maquinaria Nordson y sus accesorios: mangueras, pistolas, termostatos, cableado y tarjetas electrónicas.</p>
+        <ul>
+          <li><span class="ms">check_circle</span> Reparación de mangueras y pistolas que manejan temperatura.</li>
+          <li><span class="ms">check_circle</span> Diagnóstico y reparación de tarjetas electrónicas.</li>
+          <li><span class="ms">check_circle</span> Mantenimiento anual recomendado (2 a 3 semanas).</li>
+          <li><span class="ms">check_circle</span> Renta de equipo desde un mes, por el tiempo que lo necesites.</li>
+        </ul>
+      </div>
+      <div class="hl">
+        <div class="big">$0</div>
+        <div class="t">Préstamo de equipo sustituto sin costo de renta mientras reparamos el tuyo. Solo pagas la reparación.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="nosotros">
+  <div class="wrap about">
+    <div>
+      <span class="eyebrow rv">Nosotros</span>
+      <h2 class="rv" style="margin-top:8px">El legado que impulsa tu producción</h2>
+      <div class="tabs rv d1">
+        <button class="tab on" data-tab="hist">Historia</button>
+        <button class="tab" data-tab="mis">Misión</button>
+        <button class="tab" data-tab="vis">Visión</button>
+      </div>
+      <div class="tab-body rv d1">
+        <div data-body="hist">
+          <p>Fundada hace más de 13 años en Guadalajara bajo la visión de <strong>Miguel Ángel Mojica Hernández</strong>, M-A Solutions (antes ADHES) nació como un proyecto familiar que desde sus inicios buscó transformar los desafíos de manufactura en procesos eficientes.</p>
+          <p>Su premisa era inquebrantable: el <strong>servicio incondicional y cercano</strong>. Nunca vimos a nuestros clientes como simples transacciones, sino como aliados y amigos cuyos desafíos asumimos como propios. Hoy, bajo la dirección de <strong>Elizabeth Mojica</strong> y la integración técnica de su socia <strong>Adriana</strong>, aseguramos la continuidad operativa de la industria con rapidez, flexibilidad y atención personalizada.</p>
         </div>
-        <p style="color:#6b7280; font-size:14px; line-height:1.7; margin:0;">13 años de experiencia bajo el liderazgo de Elizabeth Mojica. De negocio familiar a referente regional en continuidad operativa, garantizando que la producción de nuestros clientes nunca se detenga.</p>
-      </div>
-      <div style="position:relative; border-radius:12px; overflow:hidden; height:300px;">
-        <img src="assets/about.jpg" alt="Bodega M-A Solutions" style="width:100%; height:100%; object-fit:cover; display:block;">
-        <span style="position:absolute; bottom:14px; left:14px; background:#74C4D9; color:#10243a; font-size:13px; font-weight:500; padding:6px 14px; border-radius:7px;">+13 años</span>
+        <div data-body="mis" hidden><p>Proveer soluciones integrales en adhesivos industriales con la agilidad y seguridad que nos dan más de 13 años de experiencia, asegurando continuidad operativa para nuestros clientes.</p></div>
+        <div data-body="vis" hidden><p>Trascender en el mercado industrial de la región occidente como una organización líder en integración tecnológica, reconocida por transformar los desafíos de manufactura en procesos eficientes, confiables y de alto rendimiento.</p></div>
       </div>
     </div>
-  </section>
-
-  <section style="background:#1f2b49; padding:56px 6%;">
-    <div style="color:#fff; font-size:28px; font-weight:500; text-align:center; margin-bottom:6px;">Cobertura en occidente</div>
-    <p style="color:#9fb0c9; font-size:14px; text-align:center; margin:0 0 30px;">Presencia y entregas en la región</p>
-    <div style="display:grid; grid-template-columns:1.4fr 1fr; gap:44px; align-items:center; max-width:1100px; margin:0 auto;">
-      <div style="background:#26345e; border-radius:12px; padding:22px; height:280px;">
-        <svg viewBox="0 0 220 150" width="100%" height="100%" role="img" aria-label="Mapa estilizado de la región occidente con sedes marcadas">
-          <path d="M40 30 L120 18 L165 45 L150 95 L95 120 L55 100 L30 65 Z" fill="#74C4D9" fill-opacity="0.28" stroke="#74C4D9" stroke-width="1.5"/>
-          <circle cx="85" cy="70" r="6" fill="#74C4D9"/><circle cx="85" cy="70" r="2.5" fill="#10243a"/>
-          <circle cx="120" cy="50" r="5" fill="#9fe0f0"/><circle cx="60" cy="92" r="5" fill="#9fe0f0"/>
-          <circle cx="135" cy="85" r="5" fill="#9fe0f0"/><circle cx="105" cy="100" r="5" fill="#9fe0f0"/>
-        </svg>
-      </div>
-      <div style="display:flex; flex-direction:column; gap:14px;">
-        <span style="color:#dbe4f1; font-size:15px; display:flex; align-items:center; gap:8px;"><span class="ms" style="color:#74C4D9; font-size:20px;">place</span> Guadalajara y ZMG</span>
-        <span style="color:#dbe4f1; font-size:15px; display:flex; align-items:center; gap:8px;"><span class="ms" style="color:#74C4D9; font-size:20px;">place</span> Aguascalientes</span>
-        <span style="color:#dbe4f1; font-size:15px; display:flex; align-items:center; gap:8px;"><span class="ms" style="color:#74C4D9; font-size:20px;">place</span> Querétaro</span>
-        <span style="color:#dbe4f1; font-size:15px; display:flex; align-items:center; gap:8px;"><span class="ms" style="color:#74C4D9; font-size:20px;">place</span> Lagos de Moreno</span>
-        <span style="color:#dbe4f1; font-size:15px; display:flex; align-items:center; gap:8px;"><span class="ms" style="color:#74C4D9; font-size:20px;">place</span> Tequila · El Salto · San Juan del Río</span>
-      </div>
+    <div class="about-media rv d2">
+      <img src="assets/ma4.jpg" alt="Interior de bodega M-A Solutions">
+      <span class="tag">+13 años de experiencia</span>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section style="background:#fff; padding:60px 6%;">
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:50px; max-width:1100px; margin:0 auto;">
+<section class="sec soft" id="clientes">
+  <div class="wrap center">
+    <span class="eyebrow rv">Nuestros clientes</span>
+    <h2 class="rv">Empresas líderes confían en nosotros</h2>
+    <p class="lead rv d1">Industrias del empaque, mueblera, automotriz y alimenticia mantienen su producción en marcha con nuestras soluciones. <span class="ast">*</span></p>
+    <div class="logos">
+      <div class="logo-box rv"><span>EMPAQUES<br>DEL BAJÍO<small>* ilustrativo</small></span></div>
+      <div class="logo-box rv d1"><span>MUEBLES<br>OCCIDENTE<small>* ilustrativo</small></span></div>
+      <div class="logo-box rv d2"><span>CARTÓN<br>MX<small>* ilustrativo</small></span></div>
+      <div class="logo-box rv d3"><span>AUTO<br>PARTES GDL<small>* ilustrativo</small></span></div>
+      <div class="logo-box rv"><span>ALIMENTOS<br>JALISCO<small>* ilustrativo</small></span></div>
+      <div class="logo-box rv d1"><span>INDUSTRIAL<br>QRO<small>* ilustrativo</small></span></div>
+    </div>
+    <p class="legend rv"><span class="ast">*</span> Logotipos ilustrativos de ejemplo. Los logos reales se colocarán una vez autorizados por cada cliente.</p>
+  </div>
+</section>
+
+<section class="sec" id="faq">
+  <div class="wrap center">
+    <span class="eyebrow rv">Preguntas frecuentes</span>
+    <h2 class="rv">Resolvemos tus dudas <span class="ast">*</span></h2>
+    <p class="lead rv d1">Respuestas rápidas a lo que más nos preguntan los equipos de mantenimiento y compras.</p>
+  </div>
+  <div class="wrap">
+    <div class="faq">
+      <div class="qa rv"><button class="q">¿Qué tan rápido responden ante una emergencia? <span class="ms">expand_more</span></button><div class="a"><p>En zona local resolvemos comúnmente en alrededor de una hora, y para envíos foráneos el tiempo depende del destino. La atención por teléfono, WhatsApp o videollamada es inmediata: muchas veces solucionamos sin necesidad de desplazarnos.</p></div></div>
+      <div class="qa rv"><button class="q">¿Manejan refacciones Nordson originales y compatibles? <span class="ms">expand_more</span></button><div class="a"><p>Sí. Ofrecemos refacciones originales Nordson y opciones 100% compatibles de alta calidad, con hasta un 30% de ahorro, para cuidar los gastos de operación sin comprometer el rendimiento.</p></div></div>
+      <div class="qa rv"><button class="q">¿Prestan equipo mientras reparan el mío? <span class="ms">expand_more</span></button><div class="a"><p>Así es. Te instalamos un equipo sustituto sin costo de renta para que tu línea no se detenga; únicamente cobramos la reparación y las piezas de tu equipo.</p></div></div>
+      <div class="qa rv"><button class="q">¿Cómo elijo el adhesivo correcto para mi proceso? <span class="ms">expand_more</span></button><div class="a"><p>Con una breve asesoría (5 a 10 minutos) identificamos cómo será tu aplicación, el tipo de sustrato y los tiempos de secado para recomendarte la fórmula exacta. Este acompañamiento es parte de nuestro servicio.</p></div></div>
+      <div class="qa rv"><button class="q">¿Cuentan con stock disponible de inmediato? <span class="ms">expand_more</span></button><div class="a"><p>Sí. Para nuestra cartera de clientes mantenemos un stock dedicado que respalda al menos una semana de producción, tanto en adhesivos como en refacciones.</p></div></div>
+      <div class="qa rv"><button class="q">¿En qué zonas tienen cobertura? <span class="ms">expand_more</span></button><div class="a"><p>Operamos desde Guadalajara para toda la región occidente (Jalisco, Aguascalientes, Querétaro, Nayarit y estados cercanos) y realizamos envíos foráneos a nivel nacional.</p></div></div>
+    </div>
+    <p class="legend center rv"><span class="ast">*</span> Sección propuesta por nosotros a partir de la información de la reunión; sujeta a validación y a las 10 preguntas frecuentes que definirá el cliente.</p>
+  </div>
+</section>
+
+<section class="sec soft" id="cobertura">
+  <div class="wrap">
+    <div class="cover rv">
       <div>
-        <div style="color:#1f2b49; font-size:28px; font-weight:500; margin-bottom:18px;">Contáctanos</div>
-        <div style="display:flex; flex-direction:column; gap:12px;">
-          <span style="height:46px; border:0.5px solid #dce0e6; border-radius:7px; display:flex; align-items:center; padding:0 14px; color:#9aa3af; font-size:14px;">Nombre</span>
-          <span style="height:46px; border:0.5px solid #dce0e6; border-radius:7px; display:flex; align-items:center; padding:0 14px; color:#9aa3af; font-size:14px;">Correo electrónico</span>
-          <span style="height:92px; border:0.5px solid #dce0e6; border-radius:7px; display:flex; padding:12px 14px; color:#9aa3af; font-size:14px;">Mensaje</span>
-          <span style="background:#74C4D9; color:#10243a; font-size:15px; font-weight:500; padding:14px 26px; border-radius:7px; text-align:center;">Enviar mensaje</span>
-        </div>
+        <h3>Cobertura en la región occidente</h3>
+        <p>No somos una tienda física: operamos desde bodega para garantizar disponibilidad y respuesta ágil. Atendemos localmente y realizamos envíos foráneos a todo el país. <span class="ast" style="color:var(--cyan)">*</span></p>
       </div>
-      <div style="display:flex; flex-direction:column; gap:22px; justify-content:center;">
-        <span style="color:#1f2b49; font-size:16px; display:flex; align-items:center; gap:10px;"><span class="ms" style="color:#2f7d9c; font-size:22px;">call</span> 33 38 15 1892</span>
-        <span style="color:#1f2b49; font-size:16px; display:flex; align-items:center; gap:10px;"><span class="ms" style="color:#2f7d9c; font-size:22px;">mail</span> contacto@m-asolutions.com</span>
-        <span style="color:#1f2b49; font-size:16px; display:flex; align-items:center; gap:10px;"><span class="ms" style="color:#2f7d9c; font-size:22px;">schedule</span> Lun a Vie · 9:00 – 17:30</span>
+      <div class="states">
+        <span><span class="ms">place</span> Guadalajara y ZMG</span>
+        <span><span class="ms">place</span> Aguascalientes</span>
+        <span><span class="ms">place</span> Querétaro</span>
+        <span><span class="ms">place</span> Lagos de Moreno</span>
+        <span><span class="ms">place</span> Nayarit</span>
+        <span><span class="ms">place</span> Envíos a nivel nacional <span class="ast" style="color:var(--cyan)">*</span></span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer style="background:#11192e; padding:26px 6%; display:flex; align-items:center; justify-content:space-between;">
-    <img src="assets/logo.png" alt="M-A Solutions" style="height:34px; display:block;">
-    <span style="color:#7e8db0; font-size:13px;">Adhesivos especializados · Occidente, México</span>
-  </footer>
+<section class="sec" id="contacto">
+  <div class="wrap">
+    <div class="center">
+      <span class="eyebrow rv">Contacto</span>
+      <h2 class="rv">¿Tu línea no puede parar? Hablemos hoy</h2>
+      <p class="lead rv d1">Cuéntanos tu reto de producción y te asesoramos sin compromiso.</p>
+    </div>
+    <div class="contact" style="margin-top:44px">
+      <form class="form-card rv" onsubmit="return false">
+        <div class="row">
+          <div class="field"><label>Nombre</label><input type="text" placeholder="Tu nombre"></div>
+          <div class="field"><label>Empresa</label><input type="text" placeholder="Tu empresa"></div>
+        </div>
+        <div class="row">
+          <div class="field"><label>Correo</label><input type="email" placeholder="correo@empresa.com"></div>
+          <div class="field"><label>Teléfono</label><input type="tel" placeholder="33 0000 0000"></div>
+        </div>
+        <div class="field"><label>¿En qué te ayudamos?</label><textarea rows="4" placeholder="Describe tu necesidad o emergencia"></textarea></div>
+        <button class="btn btn-cy btn-lg" style="width:100%;justify-content:center"><span class="ms">call</span> Solicita una llamada</button>
+      </form>
+      <div class="contact-info">
+        <div class="ci rv d1"><div class="ic"><span class="ms">call</span></div><div><div class="t">Llámanos o escríbenos</div><div class="v">33 8151 894<small>33 1881 238</small></div></div></div>
+        <div class="ci rv d2"><div class="ic"><span class="ms">mail</span></div><div><div class="t">Correo</div><div class="v">contacto@m-asolutions.com</div></div></div>
+        <div class="ci rv d3"><div class="ic"><span class="ms">schedule</span></div><div><div class="t">Horario de atención</div><div class="v">Lun a Vie · 9:00 – 17:30</div></div></div>
+        <div class="ci rv d3"><div class="ic"><span class="ms">chat</span></div><div><div class="t">WhatsApp / atención inmediata</div><div class="v">Respuesta en el momento</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <a class="wa" href="#" aria-label="WhatsApp"><span class="ms" style="color:#fff; font-size:32px;">chat</span></a>
+<footer>
+  <div class="wrap foot-grid">
+    <div>
+      <img src="assets/logo.png" alt="M-A Solutions" class="logo">
+      <p>Soluciones integrales en adhesivos industriales e integración tecnológica Nordson. La línea de producción no se detiene.</p>
+    </div>
+    <div>
+      <h5>Navegación</h5>
+      <ul>
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#soluciones">Soluciones</a></li>
+        <li><a href="#nosotros">Nosotros</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h5>Contacto</h5>
+      <ul>
+        <li><a href="tel:3338151894">33 8151 894</a></li>
+        <li><a href="tel:3321881238">33 1881 238</a></li>
+        <li><a href="mailto:contacto@m-asolutions.com">contacto@m-asolutions.com</a></li>
+        <li>Guadalajara, Jalisco · Occidente</li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="foot-bottom">
+      <span>© 2026 M-A Solutions · Adhesivos Industriales</span>
+      <span><span class="ast" style="color:var(--cyan)">*</span> Contenido de ejemplo desarrollado por INDAT, sujeto a validación del cliente.</span>
+    </div>
+  </div>
+</footer>
 
+<a class="wa-float" href="https://wa.me/523381511894" aria-label="WhatsApp"><span class="ms">chat</span></a>
+
+<script>
+  const hdr=document.getElementById('hdr');
+  addEventListener('scroll',()=>hdr.classList.toggle('solid',scrollY>40));
+  const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+  burger.addEventListener('click',()=>menu.classList.toggle('show'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('show')));
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+  document.querySelectorAll('.rv:not(.in)').forEach(el=>io.observe(el));
+  const cio=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){const el=e.target,t=+el.dataset.count,pre=el.dataset.prefix||'',suf=el.dataset.suffix||'';let n=0;const step=Math.max(1,t/40);const iv=setInterval(()=>{n+=step;if(n>=t){n=t;clearInterval(iv)}el.textContent=pre+Math.round(n)+suf},28);cio.unobserve(el)}})},{threshold:.6});
+  document.querySelectorAll('[data-count]').forEach(el=>cio.observe(el));
+  document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{
+    document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));t.classList.add('on');
+    document.querySelectorAll('[data-body]').forEach(b=>b.hidden=(b.dataset.body!==t.dataset.tab));
+  }));
+  document.querySelectorAll('.qa .q').forEach(q=>q.addEventListener('click',()=>{
+    const qa=q.parentElement,a=qa.querySelector('.a'),open=qa.classList.contains('open');
+    document.querySelectorAll('.qa').forEach(x=>{x.classList.remove('open');x.querySelector('.a').style.maxHeight=null});
+    if(!open){qa.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+  }));
+  let di=0;const dots=document.querySelectorAll('.dots span');
+  setInterval(()=>{dots.forEach(d=>d.classList.remove('on'));di=(di+1)%dots.length;dots[di].classList.add('on')},3200);
+</script>
 </body>
 </html>
