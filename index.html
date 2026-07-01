@@ -46,7 +46,7 @@
   header.nav{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(17,25,46,.55);backdrop-filter:blur(6px);transition:background .3s,padding .3s;padding:16px 0}
   header.nav.solid{background:var(--navy-deep);padding:10px 0;box-shadow:0 2px 18px rgba(0,0,0,.25)}
   .nav-in{display:flex;align-items:center;justify-content:space-between}
-  header.nav img.logo{height:44px;transition:height .3s}
+  header.nav img.logo{height:44px;width:auto;transition:height .3s}
   header.nav.solid img.logo{height:38px}
   nav ul{list-style:none;display:flex;align-items:center;gap:28px}
   nav a.lnk{color:#dbe4f1;font-size:15px;font-weight:500;transition:color .2s;position:relative}
@@ -176,9 +176,13 @@
   .cover{background:var(--navy);border-radius:20px;padding:48px;display:grid;grid-template-columns:1fr 1.2fr;gap:44px;align-items:center;color:#fff}
   .cover h3{font-size:26px;font-weight:700}
   .cover .sub{color:#9fb0c9;font-size:14px;margin-top:10px}
-  .states{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .states{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
   .states span{display:flex;align-items:center;gap:9px;color:#dbe4f1;font-size:15px}
   .states .ms{color:var(--cyan);font-size:20px}
+  .map-wrap img{width:100%;height:auto;filter:drop-shadow(0 10px 26px rgba(0,0,0,.32))}
+  .map-legend{display:flex;gap:22px;justify-content:center;margin-top:14px;font-size:13px;color:#c3cee0}
+  .map-legend .dot{display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:7px}
+  .map-legend .dot.cy{background:var(--cyan)} .map-legend .dot.mu{background:#38496f}
 
   .contact{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:stretch}
   .form-card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:34px;box-shadow:0 16px 40px rgba(31,43,73,.08)}
@@ -200,7 +204,7 @@
 
   footer{background:var(--navy-deep);color:#aebdd4;padding:56px 0 26px}
   .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
-  footer img.logo{height:40px;margin-bottom:16px}
+  footer img.logo{height:40px;width:auto;margin-bottom:16px}
   footer p{font-size:14px;line-height:1.7;max-width:320px}
   footer h5{font-family:var(--h);color:#fff;font-size:15px;font-weight:600;margin-bottom:14px}
   footer ul{list-style:none;display:flex;flex-direction:column;gap:9px}
@@ -384,7 +388,7 @@
       <div class="logo-box rv"><span>ALIMENTOS<br>JALISCO</span></div>
       <div class="logo-box rv d1"><span>INDUSTRIAL<br>QRO</span></div>
     </div>
-    <p class="legend rv" style="font-size:12px;color:var(--muted);margin-top:16px;font-style:italic"><span class="ast">*</span> Logotipos ilustrativos de ejemplo. Los logos reales se colocarán una vez autorizados por cada cliente.</p>
+    <p class="legend rv" style="font-size:12px;color:var(--muted);margin-top:16px;font-style:italic"><span class="ast">*</span> Logotipos ilustrativos de ejemplo.</p>
   </div>
 </section>
 
@@ -405,15 +409,19 @@
     <div class="cover rv">
       <div>
         <h3>Cobertura en la región occidente</h3>
-        <p class="sub">Atención local inmediata y envíos foráneos.</p>
+        <p class="sub">Atención local inmediata y envíos foráneos a todo el país.</p>
+        <div class="states">
+          <span><span class="ms">place</span> Guadalajara y ZMG</span>
+          <span><span class="ms">place</span> Aguascalientes</span>
+          <span><span class="ms">place</span> Querétaro</span>
+          <span><span class="ms">place</span> Lagos de Moreno</span>
+          <span><span class="ms">place</span> Nayarit</span>
+          <span><span class="ms">place</span> Envíos a nivel nacional</span>
+        </div>
       </div>
-      <div class="states">
-        <span><span class="ms">place</span> Guadalajara y ZMG</span>
-        <span><span class="ms">place</span> Aguascalientes</span>
-        <span><span class="ms">place</span> Querétaro</span>
-        <span><span class="ms">place</span> Lagos de Moreno</span>
-        <span><span class="ms">place</span> Nayarit</span>
-        <span><span class="ms">place</span> Envíos a nivel nacional</span>
+      <div class="map-wrap">
+        <img src="assets/mapa-cobertura.svg" alt="Mapa de cobertura M-A Solutions en la región occidente de México" loading="lazy" width="793" height="498">
+        <div class="map-legend"><span><i class="dot cy"></i> Cobertura regional</span><span><i class="dot mu"></i> Envíos a nivel nacional</span></div>
       </div>
     </div>
   </div>
