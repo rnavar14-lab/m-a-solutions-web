@@ -125,7 +125,8 @@
   .flip-back{background:var(--cyan-dk);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:22px;color:#fff}
   .flip-back h4{font-family:var(--h);font-size:15px;font-weight:600;margin-bottom:8px;color:#fff}
   .flip-back p{font-size:13px;line-height:1.55;color:#eaf6fb}
-  .flip-back .more{margin-top:12px;font-family:var(--h);font-weight:600;font-size:12px;letter-spacing:.5px;color:#eaf6fb;display:flex;align-items:center;gap:5px}
+  .flip-back .more{margin-top:12px;font-family:var(--h);font-weight:600;font-size:12px;letter-spacing:.5px;color:#eaf6fb;display:inline-flex;align-items:center;gap:5px;cursor:pointer;align-self:flex-start;padding:6px 12px;border:1px solid rgba(255,255,255,.5);border-radius:7px;transition:gap .2s,background .2s,color .2s,border-color .2s}
+  .flip-back .more:hover{background:#fff;color:var(--blue);border-color:#fff;gap:9px}
 
   .sol-cta{background:var(--navy);border-radius:14px;padding:24px 30px;display:flex;align-items:center;gap:18px;margin-top:18px}
   .sol-cta .ic{width:54px;height:54px;border-radius:12px;background:var(--cyan-dk);display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -530,7 +531,7 @@
     ['colorize','Pistola Aplicadora AD31','Aplicador manual ergonómico y resistente, ideal para trabajos de precisión y ensamble de componentes.'],
     ['precision_manufacturing','Pistola Aplicadora AD41','Automática de alta velocidad, garantiza corte limpio del adhesivo y patrón de pegado uniforme.']
   ];
-  function buildCards(list,el,imgOffset){list.forEach((c,i)=>{const img=IMG[(i+imgOffset)%IMG.length];const d=document.createElement('div');d.className='flip rv';d.innerHTML='<div class="flip-inner"><div class="flip-face flip-front"><div class="img" style="background-image:url(\''+img+'\')"></div><div class="fg"></div><span class="ms hint">autorenew</span><div class="ct"><span class="ms">'+c[0]+'</span><h4>'+c[1]+'</h4></div></div><div class="flip-face flip-back"><h4>'+c[1]+'</h4><p>'+c[2]+'</p><span class="more">Consultar <span class="ms" style="font-size:15px">arrow_forward</span></span></div></div>';el.appendChild(d);obs(d);d.addEventListener('click',()=>d.classList.toggle('flipped'))})}
+  function buildCards(list,el,imgOffset){list.forEach((c,i)=>{const img=IMG[(i+imgOffset)%IMG.length];const wa='https://wa.me/523338151892?text='+encodeURIComponent('Hola, quiero consultar sobre '+c[1]+'. ¿Me pueden dar más información?');const d=document.createElement('div');d.className='flip rv';d.innerHTML='<div class="flip-inner"><div class="flip-face flip-front"><div class="img" style="background-image:url(\''+img+'\')"></div><div class="fg"></div><span class="ms hint">autorenew</span><div class="ct"><span class="ms">'+c[0]+'</span><h4>'+c[1]+'</h4></div></div><div class="flip-face flip-back"><h4>'+c[1]+'</h4><p>'+c[2]+'</p><a class="more" href="'+wa+'" target="_blank" rel="noopener" aria-label="Consultar sobre '+c[1]+' por WhatsApp">Consultar <span class="ms" style="font-size:15px">arrow_forward</span></a></div></div>';el.appendChild(d);obs(d);d.addEventListener('click',()=>d.classList.toggle('flipped'));d.querySelector('.more').addEventListener('click',e=>e.stopPropagation())})}
   buildCards(adh,document.getElementById('adh-grid'),0);
   buildCards(maq,document.getElementById('maq-grid'),2);
   // tabs
