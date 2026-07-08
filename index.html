@@ -221,9 +221,13 @@
   .wa-float svg{width:32px;height:32px;fill:#fff}
   .wa-float::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--wa);animation:pulse 3.6s ease-out infinite;opacity:.5}
   @keyframes pulse{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.55);opacity:0}}
+  body.menu-open{overflow:hidden}
+  body.menu-open .wa-float{opacity:0;visibility:hidden;pointer-events:none}
 
   @media(max-width:920px){
-    nav ul{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);background:var(--navy-deep);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;padding:40px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px rgba(0,0,0,.4);visibility:hidden}
+    /* Sin backdrop-filter en movil: evita que el header (ancestro con filtro) atrape el menu fixed dentro de su caja */
+    header.nav{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(0,15,40,.92)}
+    nav ul{position:fixed;top:0;right:0;bottom:0;width:min(80vw,320px);background:var(--navy-deep);flex-direction:column;align-items:flex-start;justify-content:center;gap:26px;padding:40px;transform:translateX(100%);transition:transform .35s;box-shadow:-10px 0 40px rgba(0,0,0,.4);visibility:hidden;z-index:75}
     nav ul.show{transform:none;visibility:visible}
     nav a.lnk{font-size:18px}
     .burger{display:block;z-index:80}
@@ -491,7 +495,7 @@
   const hdr=document.getElementById('hdr');let tick=false;
   addEventListener('scroll',()=>{if(!tick){requestAnimationFrame(()=>{hdr.classList.toggle('solid',scrollY>40);tick=false});tick=true}});
   const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-  function setMenu(o){menu.classList.toggle('show',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}
+  function setMenu(o){menu.classList.toggle('show',o);document.body.classList.toggle('menu-open',o);burger.setAttribute('aria-expanded',o);burger.setAttribute('aria-label',o?'Cerrar menú':'Abrir menú')}
   burger.addEventListener('click',()=>setMenu(!menu.classList.contains('show')));
   menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
   addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
