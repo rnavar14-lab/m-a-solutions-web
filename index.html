@@ -264,7 +264,7 @@
         <li><a class="lnk" href="#inicio">Inicio</a></li>
         <li><a class="lnk" href="#soluciones">Soluciones</a></li>
         <li><a class="lnk" href="#nosotros">Nosotros</a></li>
-        <li><a class="lnk" href="#clientes">Clientes</a></li>
+        <li><a class="lnk" href="#cobertura">Cobertura</a></li>
         <li><a class="lnk" href="#contacto">Contacto</a></li>
         <li><a href="#contacto" class="btn btn-cy">Solicita una llamada</a></li>
       </ul>
@@ -552,7 +552,7 @@
     if(!open){qa.classList.add('open');a.style.maxHeight=a.scrollHeight+'px';q.setAttribute('aria-expanded','true')}
   }));
   // scroll spy
-  const secIds=['inicio','soluciones','nosotros','clientes','contacto'];
+  const secIds=['inicio','soluciones','nosotros','cobertura','contacto'];
   const spy=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('nav a.lnk').forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-45% 0px -50% 0px'});
   secIds.forEach(id=>{const el=document.getElementById(id);if(el)spy.observe(el)});
   // form -> WhatsApp
