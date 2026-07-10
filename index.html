@@ -126,6 +126,10 @@
   .flip-front .ct .ms{color:var(--cyan);font-size:26px;flex-shrink:0}
   .flip-front h4{font-family:var(--h);color:#fff;font-size:16px;font-weight:600;line-height:1.15}
   .flip-front .hint{position:absolute;top:12px;right:12px;z-index:2;color:#fff;opacity:.65;font-size:18px}
+  .flip-front.cat{background:#eef3f7}
+  .flip-front.cat .img{opacity:1}
+  .flip-front.cat .fg{background:linear-gradient(to top,rgba(0,23,61,.92) 0%,rgba(0,23,61,.5) 24%,rgba(0,23,61,0) 50%)}
+  .flip-front.cat .hint{color:#00173d;opacity:.55}
   .flip-back{background:var(--cyan-dk);transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;padding:22px;color:#fff}
   .flip-back h4{font-family:var(--h);font-size:15px;font-weight:600;margin-bottom:8px;color:#fff}
   .flip-back p{font-size:13px;line-height:1.55;color:#eaf6fb}
@@ -520,12 +524,12 @@
   // flip cards builder
   const IMG=['assets/ma2.jpg','assets/ma3.jpg','assets/ma4.jpg'];
   const adh=[
-    ['local_fire_department','Hot Melt en Pellets','Termofusible de alta eficiencia para pegado rápido y limpio en líneas automáticas de empaque.'],
-    ['layers','Hot Melt Almohadillas','Formulación de fácil dosificación que optimiza el rendimiento y evita la carbonización en el tanque.'],
-    ['view_in_ar','Hot Melt Barras','Versátil y de fácil aplicación manual para ensambles rápidos en industria mueblera y empaque.'],
-    ['opacity','Pegamentos Blancos (PVA)','Base agua con más de 40 variaciones adaptadas a la porosidad y velocidad de secado de tu producción.'],
-    ['grain','Adhesivos de Contacto','Unión de alta resistencia y flexibilidad, ideal para espumas, maderas y tapicería.'],
-    ['bolt','Cianoacrilatos','Pegamento instantáneo de fuerza industrial para fijaciones de alta precisión en componentes rígidos.']
+    ['local_fire_department','Hot Melt en Pellets','Termofusible de alta eficiencia para pegado rápido y limpio en líneas automáticas de empaque.','assets/prod-pellets.jpg'],
+    ['layers','Hot Melt Almohadillas','Formulación de fácil dosificación que optimiza el rendimiento y evita la carbonización en el tanque.','assets/prod-almohadillas.jpg'],
+    ['view_in_ar','Hot Melt Barras','Versátil y de fácil aplicación manual para ensambles rápidos en industria mueblera y empaque.','assets/prod-barras.jpg'],
+    ['opacity','Pegamentos Blancos (PVA)','Base agua con más de 40 variaciones adaptadas a la porosidad y velocidad de secado de tu producción.','assets/prod-pva.jpg'],
+    ['grain','Adhesivos de Contacto','Unión de alta resistencia y flexibilidad, ideal para espumas, maderas y tapicería.','assets/prod-contacto.jpg'],
+    ['bolt','Cianoacrilatos','Pegamento instantáneo de fuerza industrial para fijaciones de alta precisión en componentes rígidos.','assets/prod-ciano.jpg']
   ];
   const maq=[
     ['star','Serie ProBlue','El equipo estrella de la industria: durabilidad, eficiencia operativa y diseño compacto reconocidos mundialmente.'],
@@ -535,7 +539,7 @@
     ['colorize','Pistola Aplicadora AD31','Aplicador manual ergonómico y resistente, ideal para trabajos de precisión y ensamble de componentes.'],
     ['precision_manufacturing','Pistola Aplicadora AD41','Automática de alta velocidad, garantiza corte limpio del adhesivo y patrón de pegado uniforme.']
   ];
-  function buildCards(list,el,imgOffset){list.forEach((c,i)=>{const img=IMG[(i+imgOffset)%IMG.length];const wa='https://wa.me/523338151892?text='+encodeURIComponent('Hola, quiero consultar sobre '+c[1]+'. ¿Me pueden dar más información?');const d=document.createElement('div');d.className='flip rv';d.innerHTML='<div class="flip-inner"><div class="flip-face flip-front"><div class="img" style="background-image:url(\''+img+'\')"></div><div class="fg"></div><span class="ms hint">autorenew</span><div class="ct"><span class="ms">'+c[0]+'</span><h4>'+c[1]+'</h4></div></div><div class="flip-face flip-back"><h4>'+c[1]+'</h4><p>'+c[2]+'</p><a class="more" href="'+wa+'" target="_blank" rel="noopener" aria-label="Consultar sobre '+c[1]+' por WhatsApp">Consultar <span class="ms" style="font-size:15px">arrow_forward</span></a></div></div>';el.appendChild(d);obs(d);d.addEventListener('click',()=>d.classList.toggle('flipped'));d.querySelector('.more').addEventListener('click',e=>e.stopPropagation())})}
+  function buildCards(list,el,imgOffset){list.forEach((c,i)=>{const cat=!!c[3];const img=cat?c[3]:IMG[(i+imgOffset)%IMG.length];const fcls=cat?'flip-front cat':'flip-front';const wa='https://wa.me/523338151892?text='+encodeURIComponent('Hola, quiero consultar sobre '+c[1]+'. ¿Me pueden dar más información?');const d=document.createElement('div');d.className='flip rv';d.innerHTML='<div class="flip-inner"><div class="flip-face '+fcls+'"><div class="img" style="background-image:url(\''+img+'\')"></div><div class="fg"></div><span class="ms hint">autorenew</span><div class="ct"><span class="ms">'+c[0]+'</span><h4>'+c[1]+'</h4></div></div><div class="flip-face flip-back"><h4>'+c[1]+'</h4><p>'+c[2]+'</p><a class="more" href="'+wa+'" target="_blank" rel="noopener" aria-label="Consultar sobre '+c[1]+' por WhatsApp">Consultar <span class="ms" style="font-size:15px">arrow_forward</span></a></div></div>';el.appendChild(d);obs(d);d.addEventListener('click',()=>d.classList.toggle('flipped'));d.querySelector('.more').addEventListener('click',e=>e.stopPropagation())})}
   buildCards(adh,document.getElementById('adh-grid'),0);
   buildCards(maq,document.getElementById('maq-grid'),2);
   // tabs
