@@ -114,10 +114,10 @@
   .subhead .rule{flex:1;height:1px;background:var(--line)}
   .grid-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 
-  .flip{height:214px;perspective:1200px;cursor:pointer}
+  .flip{height:214px;perspective:1200px;cursor:pointer;border-radius:14px;overflow:hidden}
   .flip-inner{position:relative;width:100%;height:100%;transition:transform .6s cubic-bezier(.4,.2,.2,1);transform-style:preserve-3d;-webkit-transform-style:preserve-3d}
   .flip:hover .flip-inner,.flip.flipped .flip-inner{transform:rotateY(180deg);-webkit-transform:rotateY(180deg)}
-  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .flip-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:14px;border:1px solid var(--line)}
   .flip-front{background:var(--navy)}
   .flip-front .img{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.5;transition:transform .6s,opacity .3s}
   .flip:hover .flip-front .img{transform:scale(1.06)}
