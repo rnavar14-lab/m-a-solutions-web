@@ -135,6 +135,15 @@
   .flip-back p{font-size:13px;line-height:1.55;color:#eaf6fb}
   .flip-back .more{margin-top:12px;font-family:var(--h);font-weight:600;font-size:12px;letter-spacing:.5px;color:#eaf6fb;display:inline-flex;align-items:center;gap:5px;cursor:pointer;align-self:flex-start;padding:6px 12px;border:1px solid rgba(255,255,255,.5);border-radius:7px;transition:gap .2s,background .2s,color .2s,border-color .2s}
   .flip-back .more:hover{background:#fff;color:var(--blue);border-color:#fff;gap:9px}
+  /* En dispositivos tactiles (iOS/Android): sin rotacion 3D (evita texto espejeado en WebKit); se usa fundido */
+  @media (hover:none){
+    .flip-inner{transform:none!important;-webkit-transform:none!important;transition:none}
+    .flip:hover .flip-inner,.flip.flipped .flip-inner{transform:none!important;-webkit-transform:none!important}
+    .flip-face{backface-visibility:visible;-webkit-backface-visibility:visible;transition:opacity .3s ease}
+    .flip-back{transform:none!important;-webkit-transform:none!important;opacity:0;z-index:2}
+    .flip.flipped .flip-back{opacity:1}
+    .flip.flipped .flip-front{opacity:0}
+  }
 
   .sol-cta{background:var(--navy);border-radius:14px;padding:24px 30px;display:flex;align-items:center;gap:18px;margin-top:18px}
   .sol-cta .ic{width:54px;height:54px;border-radius:12px;background:var(--cyan-dk);display:flex;align-items:center;justify-content:center;flex-shrink:0}
